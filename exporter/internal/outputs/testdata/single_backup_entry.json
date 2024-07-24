@@ -1,0 +1,14 @@
+[
+    {
+        "backup_id": "20240622T084702",
+        "end_time": "Sat Jun 22 08:47:10 2024",
+        "end_time_timestamp": "1719046030",
+        "retention_status": "-",
+        "size": "52.7 MiB",
+        "size_bytes": 55210398,
+        "status": "DONE",
+        "tablespaces": [],
+        "wal_size": "32.0 MiB",
+        "wal_size_bytes": 33554432
+    }
+]

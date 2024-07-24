@@ -1,0 +1,56 @@
+{
+  "pg": {
+    "active": {
+      "description": "Active",
+      "message": "True"
+    },
+    "backups_number": {
+      "description": "No. of available backups",
+      "message": "2"
+    },
+    "current_size": {
+      "description": "Current data size",
+      "message": "36.7 MiB"
+    },
+    "current_xlog": {
+      "description": "Current WAL segment",
+      "message": "00000001000000000000000E"
+    },
+    "data_directory": {
+      "description": "PostgreSQL Data directory",
+      "message": "/var/lib/postgresql/data"
+    },
+    "disabled": {
+      "description": "Disabled",
+      "message": "False"
+    },
+    "first_backup": {
+      "description": "First available backup",
+      "message": "20240707T183151"
+    },
+    "is_in_recovery": {
+      "description": "Cluster state",
+      "message": "in production"
+    },
+    "last_backup": {
+      "description": "Last available backup",
+      "message": "20240707T183345"
+    },
+    "minimum_redundancy": {
+      "description": "Minimum redundancy requirements",
+      "message": "satisfied (2/0)"
+    },
+    "passive_node": {
+      "description": "Passive node",
+      "message": "False"
+    },
+    "pg_version": {
+      "description": "PostgreSQL version",
+      "message": "16.3"
+    },
+    "retention_policies": {
+      "description": "Retention policies",
+      "message": "not enforced"
+    }
+  }
+}

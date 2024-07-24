@@ -1,0 +1,6 @@
+port: "2222"
+integration_type: "shell"
+cache_ttl: 2
+checks_cache_ttl: 2
+refresh_interval: 5
+log_level: debug

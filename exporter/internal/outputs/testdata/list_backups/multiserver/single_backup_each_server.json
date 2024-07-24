@@ -1,0 +1,54 @@
+{
+  "pg-0": [
+    {
+      "backup_id": "20240707T183345",
+      "end_time": "Sun Jul  7 18:33:50 2024",
+      "end_time_timestamp": "1720377230",
+      "retention_status": "-",
+      "size": "52.7 MiB",
+      "size_bytes": 55210396,
+      "status": "DONE",
+      "tablespaces": [],
+      "wal_size": "0 B",
+      "wal_size_bytes": 0
+    },
+    {
+      "backup_id": "20240707T183151",
+      "end_time": "Sun Jul  7 18:31:56 2024",
+      "end_time_timestamp": "1720377116",
+      "retention_status": "-",
+      "size": "52.7 MiB",
+      "size_bytes": 55210396,
+      "status": "DONE",
+      "tablespaces": [],
+      "wal_size": "48.0 MiB",
+      "wal_size_bytes": 50331648
+    }
+  ],
+  "pg-1": [
+    {
+      "backup_id": "20240707T183351",
+      "end_time": "Sun Jul  7 18:33:56 2024",
+      "end_time_timestamp": "1720377236",
+      "retention_status": "-",
+      "size": "52.7 MiB",
+      "size_bytes": 55275932,
+      "status": "DONE",
+      "tablespaces": [],
+      "wal_size": "0 B",
+      "wal_size_bytes": 0
+    },
+    {
+      "backup_id": "20240707T183156",
+      "end_time": "Sun Jul  7 18:32:02 2024",
+      "end_time_timestamp": "1720377122",
+      "retention_status": "-",
+      "size": "52.7 MiB",
+      "size_bytes": 55275932,
+      "status": "DONE",
+      "tablespaces": [],
+      "wal_size": "48.0 MiB",
+      "wal_size_bytes": 50331648
+    }
+  ]
+}

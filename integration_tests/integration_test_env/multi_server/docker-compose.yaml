@@ -1,0 +1,49 @@
+services:
+  database:
+    image: postgres:16-bullseye
+    environment:
+      POSTGRES_USER: tester
+      POSTGRES_PASSWORD: tester
+      POSTGRES_DB: tester
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    volumes:
+      - ./pg_setup/pg_hba:/etc/postgresql/pg_hba.conf
+      - ./pg_setup/pg_config:/etc/postgresql/postgresql.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d postgres -U tester"]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+  database_2:
+    image: postgres:16-bullseye
+    environment:
+      POSTGRES_USER: tester
+      POSTGRES_PASSWORD: tester
+      POSTGRES_DB: tester
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    volumes:
+      - ./pg_setup/pg_hba:/etc/postgresql/pg_hba.conf
+      - ./pg_setup/pg_config:/etc/postgresql/postgresql.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d postgres -U tester"]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+  init_dbs:
+    image: postgres:16-bullseye
+    command: ["/opt/init_pg.sh"]
+    depends_on:
+      database:
+        condition: service_healthy
+      database_2:
+        condition: service_healthy
+    volumes: 
+      - ./pg_setup/init_pg.sh:/opt/init_pg.sh
+  barman:
+    build:
+      dockerfile: barman.Dockerfile
+    ports:
+    - 2222:2222
+    depends_on:
+      init_dbs:
+        condition: service_completed_successfully

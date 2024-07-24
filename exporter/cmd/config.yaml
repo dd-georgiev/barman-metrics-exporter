@@ -1,0 +1,7 @@
+address: localhost
+port: "2222"
+integration_type: "mock" # options: mock, shell
+cache_ttl: 2
+checks_cache_ttl: 10
+refresh_interval: 5
+log_level: debug

@@ -1,0 +1,76 @@
+{
+  "pg": {
+    "archiver_errors": {
+      "hint": "",
+      "status": "FAILED"
+    },
+    "backup_maximum_age": {
+      "hint": "no last_backup_maximum_age provided",
+      "status": "FAILED"
+    },
+    "backup_minimum_size": {
+      "hint": "0 B",
+      "status": "FAILED"
+    },
+    "compression_settings": {
+      "hint": "",
+      "status": "FAILED"
+    },
+    "directories": {
+      "hint": "",
+      "status": "FAILED"
+    },
+    "failed_backups": {
+      "hint": "there are 0 failed backups",
+      "status": "FAILED"
+    },
+    "minimum_redundancy_requirements": {
+      "hint": "have 0 backups, expected at least 0",
+      "status": "FAILED"
+    },
+    "pg_basebackup": {
+      "hint": "",
+      "status": "FAILED"
+    },
+    "pg_basebackup_compatible": {
+      "hint": "PostgreSQL version: None, pg_basebackup version: 16.3",
+      "status": "FAILED"
+    },
+    "pg_receivexlog": {
+      "hint": "",
+      "status": "FAILED"
+    },
+    "pg_receivexlog_compatible": {
+      "hint": "PostgreSQL version: None, pg_receivexlog version: 16.3",
+      "status": "FAILED"
+    },
+    "postgresql": {
+      "hint": "",
+      "status": "FAILED"
+    },
+    "receive_wal_running": {
+      "hint": "See the Barman log file for more details",
+      "status": "FAILED"
+    },
+    "replication_slot": {
+      "hint": "replication slot 'barman' doesn't exist. Please execute 'barman receive-wal --create-slot pg'",
+      "status": "FAILED"
+    },
+    "retention_policy_settings": {
+      "hint": "",
+      "status": "FAILED"
+    },
+    "systemid_coherence": {
+      "hint": "no system Id available",
+      "status": "FAILED"
+    },
+    "wal_maximum_age": {
+      "hint": "no last_wal_maximum_age provided",
+      "status": "FAILED"
+    },
+    "wal_size": {
+      "hint": "0 B",
+      "status": "FAILED"
+    }
+  }
+}

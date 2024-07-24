@@ -1,0 +1,17 @@
+[Unit]
+Description=Barman Metric Exporter
+After=network-online.target
+ConditionPathExists=/opt/barman_exporter
+ConditionPathExists=/etc/barman_exporter/config.yaml
+
+[Service]
+Type=simple
+User=barman
+Group=barman
+ExecStart=/opt/barman_exporter -config /etc/barman_exporter/config.yaml
+SyslogIdentifier=barman_exporter
+Restart=always
+ExecReload=kill -SIGUSR1 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

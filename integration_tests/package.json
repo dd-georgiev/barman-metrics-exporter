@@ -1,0 +1,17 @@
+{
+  "name": "barman_exporter_integration_tests",
+  "version": "1.0.0",
+  "description": "Integration tests suite for barman exporter",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Deyan Georgiev",
+  "license": "ISC",
+  "devDependencies": {
+    "testcontainers": "^10.10.3"
+  },
+  "dependencies": {
+    "supertest": "^7.0.0"
+  }
+}

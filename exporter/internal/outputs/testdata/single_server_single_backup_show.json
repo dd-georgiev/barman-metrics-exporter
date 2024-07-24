@@ -1,0 +1,51 @@
+{
+    "pg": {
+      "backup_id": "20240622T084702",
+      "base_backup_information": {
+        "analysis_time": "less than one second",
+        "analysis_time_seconds": 0,
+        "begin_lsn": "0/3000028",
+        "begin_offset": 40,
+        "begin_time": "2024-06-22 08:47:02.291562+00:00",
+        "begin_time_timestamp": "1719046022",
+        "begin_wal": "000000010000000000000003",
+        "copy_time": "8 seconds",
+        "copy_time_seconds": 8.239298,
+        "disk_usage": "36.7 MiB",
+        "disk_usage_bytes": 38433182,
+        "disk_usage_with_wals": "52.7 MiB",
+        "disk_usage_with_wals_bytes": 55210398,
+        "end_lsn": "0/4000000",
+        "end_offset": 0,
+        "end_time": "2024-06-22 08:47:10.556880+00:00",
+        "end_time_timestamp": "1719046030",
+        "end_wal": "000000010000000000000003",
+        "incremental_size": "36.7 MiB",
+        "incremental_size_bytes": 38433182,
+        "incremental_size_ratio": "-0.00%",
+        "number_of_workers": 1,
+        "throughput": "4.4 MiB/s",
+        "throughput_bytes": 4664618.514829783,
+        "timeline": 1
+      },
+      "catalog_information": {
+        "next_backup": "- (this is the latest base backup)",
+        "previous_backup": "- (this is the oldest base backup)",
+        "retention_policy": "not enforced"
+      },
+      "pgdata_directory": "/var/lib/postgresql/data",
+      "postgresql_version": 160003,
+      "status": "DONE",
+      "tablespaces": [],
+      "wal_information": {
+        "compression_ratio": 0,
+        "disk_usage": "32.0 MiB",
+        "disk_usage_bytes": 33554432,
+        "last_available": "000000010000000000000005",
+        "no_of_files": 2,
+        "timelines": [],
+        "wal_rate": "183.68/hour",
+        "wal_rate_per_second": 0.05102330047234898
+      }
+    }
+}

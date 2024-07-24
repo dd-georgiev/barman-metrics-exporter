@@ -1,0 +1,92 @@
+{
+  "pg": {
+    "wont_be_parsed_archiver_errors": {
+      "hint": "",
+      "status": "OK"
+    },
+    "backup_maximum_age": {
+      "hint": "no last_backup_maximum_age provided",
+      "status": "OK"
+    },
+    "backup_minimum_size": {
+      "hint": "0 B",
+      "status": "OK"
+    },
+    "compression_settings": {
+      "hint": "",
+      "status": "OK"
+    },
+    "directories": {
+      "hint": "",
+      "status": "OK"
+    },
+    "failed_backups": {
+      "hint": "there are 0 failed backups",
+      "status": "OK"
+    },
+    "minimum_redundancy_requirements": {
+      "hint": "have 0 backups, expected at least 0",
+      "status": "OK"
+    },
+    "pg_basebackup": {
+      "hint": "",
+      "status": "OK"
+    },
+    "pg_basebackup_compatible": {
+      "hint": "",
+      "status": "OK"
+    },
+    "pg_basebackup_supports_tablespaces_mapping": {
+      "hint": "",
+      "status": "OK"
+    },
+    "pg_receivexlog": {
+      "hint": "",
+      "status": "OK"
+    },
+    "pg_receivexlog_compatible": {
+      "hint": "",
+      "status": "OK"
+    },
+    "postgresql": {
+      "hint": "",
+      "status": "OK"
+    },
+    "postgresql_streaming": {
+      "hint": "",
+      "status": "OK"
+    },
+    "receive_wal_running": {
+      "hint": "",
+      "status": "OK"
+    },
+    "replication_slot": {
+      "hint": "",
+      "status": "OK"
+    },
+    "retention_policy_settings": {
+      "hint": "",
+      "status": "OK"
+    },
+    "superuser_or_standard_user_with_backup_privileges": {
+      "hint": "",
+      "status": "OK"
+    },
+    "systemid_coherence": {
+      "hint": "no system Id stored on disk",
+      "status": "OK"
+    },
+    "wal_level": {
+      "hint": "",
+      "status": "OK"
+    },
+    "wal_maximum_age": {
+      "hint": "no last_wal_maximum_age provided",
+      "status": "OK"
+    },
+    "wal_size": {
+      "hint": "0 B",
+      "status": "OK"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+address: 0.0.0.0 # Leave this to 0.0.0.0 otherwise host machine won't be able to access the exporter
+port: "2220"
+integration_type: "shell"
+cache_ttl: 2
+checks_cache_ttl: 2
+refresh_interval: 5
+log_level: debug
