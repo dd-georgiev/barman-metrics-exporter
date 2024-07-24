@@ -67,6 +67,7 @@ The configuration options are as follows:
 
 Example config:
 ```yaml
+address: 127.0.0.1
 port: "2222"
 integration_type: "shell"
 cache_ttl: 50
