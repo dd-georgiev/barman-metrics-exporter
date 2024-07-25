@@ -76,10 +76,20 @@ refresh_interval: 60
 log_level: "warn"
 ```
 ## Scraping
-### Prometheus
 ### Grafana agent/alloy
-### Datadog agent
+Here is example configuration block for scrapping the exporter with Grafana Alloy
+```
+prometheus.scrape "barman_scraper" {
+  targets = [
+    {"__address__" = "localhost:2222", "instance" = "barman" }, # Add any extra tags, fell free to remove the instance tag
+  ]
 
+  forward_to = [prometheus.remote_write.default.receiver] # Change this to proper receiver
+
+  scrape_interval = "60s"
+  metrics_path    = "/metrics"
+}
+```
 # Troubleshooting
 ## Known problems
 Sometimes `barman check` command can be very slow(minutes), for example when there are a lot of tablespaces, barman uses `SELECT sum(pg_tablespace_size(oid)) FROM pg_tablespace` query which can take a lot of time to compute. In those scenarios you can increase the cache time to live for the check command. This will result in fewer execution of `barman check` and hence it will take longer to detect issues.

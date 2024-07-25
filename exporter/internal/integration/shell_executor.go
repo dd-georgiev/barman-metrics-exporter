@@ -6,11 +6,10 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
+	"math/rand/v2"
 	"os/exec"
 	"strings"
 	"time"
-
-	"golang.org/x/exp/rand"
 )
 
 // Uses shell to execute barman commands.
@@ -66,11 +65,10 @@ func (sh *ShellExecutor) GetAllServerStatuses(ctx context.Context) (string, erro
 
 // Generates random string, which is attached to all logs from executeShellCommand function
 func generateRandomLogId(length int) string {
-	rand.Seed(uint64(time.Now().UnixNano()))
 	chars := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	result := make([]byte, length)
 	for i := 0; i < length; i++ {
-		result[i] = chars[rand.Intn(len(chars))]
+		result[i] = chars[rand.IntN(len(chars))]
 	}
 	return string(result)
 }
