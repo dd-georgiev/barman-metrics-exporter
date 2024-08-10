@@ -2,6 +2,57 @@
 This application provides a set of metrics for the state of [pgbarman](https://pgbarman.org/). It is meant as replacement for [prometheus-barman-exporter](https://github.com/marcinhlybin/prometheus-barman-exporter), which appears to be inactive for some time. 
 
 All metrics provided by [prometheus-barman-exporter](https://github.com/marcinhlybin/prometheus-barman-exporter) are supported and unchanged.
+```
+# HELP barman_backup_size Outputs the size of a specific backup(for specific server) in bytes
+# TYPE barman_backup_size gauge
+barman_backup_size{number="0",server="pg"} 5.5210398e+07
+barman_backup_size{number="1",server="pg"} 5.5210398e+07
+# HELP barman_backup_wal_size Outputs the size of a the wals for specific backup(for specific server) in bytes
+# TYPE barman_backup_wal_size gauge
+barman_backup_wal_size{number="0",server="pg"} 3.3554432e+07
+barman_backup_wal_size{number="1",server="pg"} 3.3554432e+07
+# HELP barman_backups_failed Outputs the current number of backups with status FAILED for specific server
+# TYPE barman_backups_failed gauge
+barman_backups_failed{server="pg"} 0
+# HELP barman_backups_total Outputs the current number of available backups for specific server
+# TYPE barman_backups_total gauge
+barman_backups_total{server="pg"} 2
+# HELP barman_first_backup Time since the first backup was taken in seconds
+# TYPE barman_first_backup gauge
+barman_first_backup{server="pg"} 4.184067e+06
+# HELP barman_last_backup Time since the last backup was taken in seconds
+# TYPE barman_last_backup gauge
+barman_last_backup{server="pg"} 4.184067e+06
+# HELP barman_last_backup_copy_time Outputs the time it took to get the latest backup in seconds
+# TYPE barman_last_backup_copy_time gauge
+barman_last_backup_copy_time{server="pg"} 8.239298
+# HELP barman_metrics_update Outputs the time(in ms) it took update all metrics exporter by this exporter
+# TYPE barman_metrics_update gauge
+barman_metrics_update 2
+# HELP barman_up Barman status checks
+# TYPE barman_up gauge
+barman_up{check="archiver_errors",server="pg"} 1
+barman_up{check="backup_maximum_age",server="pg"} 1
+barman_up{check="compression_settings",server="pg"} 1
+barman_up{check="directories",server="pg"} 1
+barman_up{check="failed_backups",server="pg"} 1
+barman_up{check="minimum_redundancy_requirements",server="pg"} 1
+barman_up{check="pg_basebackup",server="pg"} 1
+barman_up{check="pg_basebackup_compatible",server="pg"} 1
+barman_up{check="pg_basebackup_supports_tablespaces_mapping",server="pg"} 1
+barman_up{check="pg_receivexlog",server="pg"} 1
+barman_up{check="pg_receivexlog_compatible",server="pg"} 1
+barman_up{check="postgresql",server="pg"} 1
+barman_up{check="postgresql_streaming",server="pg"} 1
+barman_up{check="receive_wal_running",server="pg"} 1
+barman_up{check="replication_slot",server="pg"} 1
+barman_up{check="retention_policy_settings",server="pg"} 1
+barman_up{check="superuser_or_standard_user_with_backup_privileges",server="pg"} 1
+barman_up{check="systemid_coherence",server="pg"} 1
+barman_up{check="wal_level",server="pg"} 1
+barman_up{check="wal_maximum_age",server="pg"} 1
+barman_up{check="wal_size",server="pg"} 1
+```
 # Architecture 
 ![Architecture](./img/architecture.svg)
 

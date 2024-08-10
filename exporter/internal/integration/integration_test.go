@@ -44,7 +44,7 @@ func TestGetAllServerChecks(t *testing.T) {
 	}
 	for _, key := range outputs.ServerChecksKeys {
 		if checks[0].Check[key] != true {
-			t.Errorf("TERR outputs_0008: Invalid %s, expected 'true' got: %+v", key, checks[0].Check[key])
+			t.Errorf("TERR integration_0015: Invalid %s, expected 'true' got: %+v", key, checks[0].Check[key])
 		}
 	}
 }

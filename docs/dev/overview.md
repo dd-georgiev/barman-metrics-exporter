@@ -4,11 +4,12 @@ The project provides a set of metrics (defined in `docs/spec`) in prometheus for
 This document provides information about external and internal `dependencies` and `how-to`.
 
 # Dependencies and conventions
-## Config
+## Dependencies
+### Config
 [https://github.com/gookit/config](https://github.com/gookit/config) is used to handle configuration data. 
 The setup is done in `cmd/main.go`, the main function calls `initConfig` which takes care of setting up the library. Currently the idea is that the user will pass `-config` flag to the application pointing to configuration file. The method then setups the config based on this file.
 
-## Metrics
+### Metrics
 The [otel/metric](https://pkg.go.dev/go.opentelemetry.io/otel/metric) package is used for handling the low-level details around the metric. In `cmd/main.go` the initial setup is done(the `initMetrics`) method. Then individual metrics implementing the `BarmanMetric` interfaces consume the APIs.
 
 
@@ -49,6 +50,10 @@ if struct_eg[0].Server == struct_eg[1].Server { // make sure that the servers ar
 
 # How-To
 ## Run locally
+1. Navigate to `exporter/cmd/`
+2. Run `go run main.go -config config.yaml`
+
+This will start the exporter with `mock` integration and metrics on `localhost:2222/metrics`
 ## Add config option
 Add it in `config.yaml` and then use config.TYPE("OPTION_NAME") `[e.g. config.String("port")]` to retrieve it. Doing so will require importing `"github.com/gookit/config/v2"` in the file.
 ## Add new metrics
@@ -96,4 +101,4 @@ docker-compose down
 ```
 
 ## Run integration tests
-Visit the README.md in the integration_tests directory for more information about running the integration tests locally. 
+Visit the README.md in the `integration_tests` directory for more information about running the integration tests locally. 

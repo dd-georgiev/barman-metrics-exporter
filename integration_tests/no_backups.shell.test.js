@@ -1,12 +1,12 @@
 const { DockerComposeEnvironment, Wait } = require("testcontainers");
 const assert = require('./tests_utils/assertions')
-const composeFilePath = "integration_test_env/multi_server"
+const composeFilePath = "integration_test_env/single_server_no_backup"
 const composeFile = "docker-compose.yaml";
 const request = require('supertest');
 
 const SECONDS = 1000
 const MINUTES = 60*SECONDS
-describe("Barman exporter with multiple postgres servers", () => { 
+describe("Barman exporter with single server and no backups", () => { 
     let environment
     let res
     jest.setTimeout(10 * MINUTES)
@@ -16,29 +16,24 @@ describe("Barman exporter with multiple postgres servers", () => {
         .withStartupTimeout(5 * MINUTES)
         .up();
 
-        // let the metricsenvironment collect and be exposed
+        // let the metrics collect and be exposed
         const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-        await delay(30 * SECONDS) /// waiting 1 second.
+        await delay(30 * SECONDS)
 
 
-        const req = request("http://localhost:2222")
+        const req = request("http://localhost:2225")
         res = await req.get('/metrics')
 
     })
-
+    
     afterAll(async () => { 
         await environment.down()
     })
-    
+
     it("Must return response with status 200 OK", () => { 
         expect(res.status).toBe(200)
     })
-    it("Must contain all exposed metrics", () => {
-        assert.AllMetricsArePresentedForServer(expect, res.text, "pg-1")
-        assert.AllMetricsArePresentedForServer(expect, res.text, "pg-0")
-    })
     it("Must contain valid values for barman checks", async () => { 
-        assert.AllBarmanChecksAreCorrect(expect, res.text, "pg-0")
-        assert.AllBarmanChecksAreCorrect(expect, res.text, "pg-1")
+        assert.AllBarmanChecksAreCorrect(expect, res.text, "pg")
     })
 })

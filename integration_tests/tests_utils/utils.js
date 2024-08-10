@@ -6,7 +6,10 @@ const ALL_METRICS_NAMES = [
     "barman_backups_total",
     "barman_backups_failed",
     "barman_backup_wal_size",
-    "barman_backup_size"
+    "barman_backup_size",
+    "barman_last_backup_wal_rate_per_second",
+    "barman_last_backup_wal_files",
+    "barman_last_backup_throughput"
 ]
 const BARMAN_UP_LABELS = [
     "archiver_errors",
