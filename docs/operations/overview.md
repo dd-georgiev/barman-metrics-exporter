@@ -53,6 +53,19 @@ barman_up{check="wal_level",server="pg"} 1
 barman_up{check="wal_maximum_age",server="pg"} 1
 barman_up{check="wal_size",server="pg"} 1
 ```
+
+In addition to those metrics ther are 3 new ones:
+```
+# HELP barman_last_backup_throughput Outputs the throughput(in bytes/second) during the last backup creation
+# TYPE barman_last_backup_throughput gauge
+barman_last_backup_throughput{server="pg"} 4.664618514829783e+06
+# HELP barman_last_backup_wal_files outputs the number of wals for the last backup
+# TYPE barman_last_backup_wal_files gauge
+barman_last_backup_wal_files{server="pg"} 2
+# HELP barman_last_backup_wal_rate_per_second Outputs the wal rate for the last backup
+# TYPE barman_last_backup_wal_rate_per_second gauge
+barman_last_backup_wal_rate_per_second{server="pg"} 0.05102330047234898
+```
 # Architecture 
 ![Architecture](./img/architecture.svg)
 
@@ -74,25 +87,25 @@ The integration module forks a process with the `barman cli`, all environment va
 
 
 **NOTE:**  
- There appears to be HTTP API for barman. The code can be found in [https://github.com/emin100/barmanapi](https://github.com/emin100/barmanapi). The API is also mentioned in the [official documentation](https://docs.pgbarman.org/release/3.10.0/#links), however the last commit for the project is 8 years ago. Given that this exporter doesn't support it.
+ There appears to be HTTP API for barman. The code can be found in [https://github.com/emin100/barmanapi](https://github.com/emin100/barmanapi). The API is also mentioned in the [official documentation](https://docs.pgbarman.org/release/3.10.0/#links), however the last commit for the project was 8 years ago. Given that this exporter doesn't support it.
 # Deployment and configuration
 
 ## Installation
 ## Systemd service
 In order to make managing the state of the exporter, the following unit file can be used:
-> Assuming that the exporter executable is stored in `/opt/barman_exporter` and the configuration is in `/etc/barman_exporter/config.yaml`
+> Assuming that the exporter executable is stored in `/opt/barman_exporter/exporter` and the configuration is in `/etc/barman_exporter/config.yaml`
 ```
 [Unit]
 Description=Barman Metric Exporter
 After=network-online.target
-ConditionPathExists=/opt/barman_exporter
+ConditionPathExists=/opt/barman_exporter/exporter
 ConditionPathExists=/etc/barman_exporter/config.yaml
 
 [Service]
 Type=simple
 User=barman
 Group=barman
-ExecStart=/opt/barman_exporter -config /etc/barman_exporter/config.yaml
+ExecStart=/opt/barman_exporter/exporter -config /etc/barman_exporter/config.yaml
 SyslogIdentifier=barman_exporter
 Restart=always
 ExecReload=kill -SIGUSR1 $MAINPID
