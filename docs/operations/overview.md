@@ -87,7 +87,7 @@ The integration module forks a process with the `barman cli`, all environment va
 
 
 **NOTE:**  
- There appears to be HTTP API for barman. The code can be found in [https://github.com/emin100/barmanapi](https://github.com/emin100/barmanapi). The API is also mentioned in the [official documentation](https://docs.pgbarman.org/release/3.10.0/#links), however the last commit for the project was 8 years ago. Given that this exporter doesn't support it.
+ There appears to be HTTP API for barman. The code can be found in [https://github.com/emin100/barmanapi](https://github.com/emin100/barmanapi). The API is also mentioned in the [official documentation](https://docs.pgbarman.org/release/3.10.0/#links), however the last commit for the project was 8 years ago. This exporter doesn't support it.
 # Deployment and configuration
 
 ## Installation
