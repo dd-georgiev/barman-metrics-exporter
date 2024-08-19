@@ -104,6 +104,7 @@ You can compile the exporter as follows:
    docker cp exporter_build:/app/exporter $(pwd)/exporter
    docker rm exporter_build
    ```
+ 4. The `exporter` binary will have all dependencies packaged inside it, you can upload it to any machine and start it. Don't forget to grant execution permissions (`chmod a+x exporter`)
 ## Systemd service
 In order to make managing the state of the exporter, the following unit file can be used:
 > Assuming that the exporter executable is stored in `/opt/barman_exporter/exporter` and the configuration is in `/etc/barman_exporter/config.yaml`
