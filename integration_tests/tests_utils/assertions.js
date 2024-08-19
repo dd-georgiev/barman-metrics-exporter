@@ -9,7 +9,7 @@ assert.AllMetricsArePresentedForServer(expect, res.text, SRV_NAME)
 */
 
 // The public assertions must be placed at the top, while the internal one are at the bottom.
-// Preferably all regexes will be put in internal assertion(s) with desccriptive name.
+// Preferably all regexes will be put in internal assertion(s) with descriptive name.
 
 const utils = require('./utils')
 // Public assertions
@@ -32,10 +32,22 @@ function AllMetricsArePresentedForServer(expect, body, server) {
 
 /**
  * Asserts that all checks from the barman_up command are either equal to 0 or 1. Other values for this metric are invalid.
+ * @param {function} expect - The set of Jest Matchers. https://jestjs.io/docs/expect
+ * @param {string} body - the response body from the exporter
+ * @param {string} server - name of the server, used for searching the `server` label(e.g. server="pg-0") 
  */
 function AllBarmanChecksAreCorrect(expect, body, server) {
     assertAllBarmanChecksAreEqualToOneOrZero(expect, body, server)
 }
+/**
+ * Assert that none of the supported metrics are presented. This must be the case when Barman doesn't have any active servers in its configuration
+ * @param {function} expect - The set of Jest Matchers. https://jestjs.io/docs/expect
+ * @param {string} body - the response body from the exporter
+ */
+function NoMetricsArePresented(expect, body) {
+    assertNoBarmanMetricsArePresented(expect, body)
+}
+
 // Internal assertions
 /*
 I. Convention
@@ -54,6 +66,12 @@ function assertAllBarmanChecksArePresentedForServer(expect, body, server) {
         expect(body).toMatch(new RegExp(`barman_up{check="${check}".*server="${server}"}.*`))
     }
 }
+
+function assertNoBarmanMetricsArePresented(expect, body) { 
+    for (const metric of utils.ALL_METRICS_NAMES) {
+        expect(body).not.toMatch(new RegExp(`${metric}.*`))
+    } 
+}
 function assertAllBarmanChecksAreEqualToOneOrZero(expect, body, server) {
     const REGEX_MATCH_ZERO_OR_ONE = '[01]'
     for (const check of utils.BARMAN_UP_LABELS) {
@@ -64,5 +82,6 @@ function assertAllBarmanChecksAreEqualToOneOrZero(expect, body, server) {
 
 module.exports = { 
     AllMetricsArePresentedForServer,
-    AllBarmanChecksAreCorrect
+    AllBarmanChecksAreCorrect,
+    NoMetricsArePresented
 }

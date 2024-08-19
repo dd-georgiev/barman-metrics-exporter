@@ -21,8 +21,6 @@ import (
 	"go.opentelemetry.io/otel/sdk/metric"
 )
 
-const UpdateIntervalInSeconds = 5
-
 /*
 Handles:
  1. Configuration setup (loads config file passed via CLI argument)
@@ -34,6 +32,14 @@ Handles:
     5.2 SIGTERM, & interrupt(ctrl+c) - kill the program.
 */
 func main() {
+	// NOTE: gookit is taking ownership of -help flag and hijacks the output.
+	// We need to invoke the printHelp function before gookit is configured.
+	if len(os.Args) < 2 {
+		printHelp()
+	}
+	if os.Args[1] == "-help" || os.Args[1] == "--help" || os.Args[1] == "help" {
+		printHelp()
+	}
 	ctx := context.Background()
 
 	initConfig()
@@ -155,4 +161,14 @@ func getExecutorFromConfig() integration.CommandExecutor {
 	default:
 		panic("Unknown exeuctor type")
 	}
+}
+
+func printHelp() {
+	fmt.Println("Barman Metric Expoter")
+	fmt.Println("Usage: ")
+	fmt.Println("exporter -config <argument>")
+	fmt.Println("The config argument must point to file with configuration for the exporter")
+	fmt.Println("Source code and documentation are available at https://github.com/dd-georgiev/barman-metrics-exporter")
+
+	os.Exit(0)
 }

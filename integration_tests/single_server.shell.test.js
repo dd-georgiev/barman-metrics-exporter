@@ -13,6 +13,7 @@ describe("Barman exporter with single postgres servers", () => {
     beforeAll(async () => { 
         environment = await new DockerComposeEnvironment(composeFilePath, composeFile)
         .withWaitStrategy("barman", Wait.forLogMessage("serving metrics atserving metrics at localhost:2222/metrics"))
+        .withStartupTimeout(5 * MINUTES)
         .up();
 
         // let the metrics collect and be exposed
@@ -24,6 +25,11 @@ describe("Barman exporter with single postgres servers", () => {
         res = await req.get('/metrics')
 
     })
+
+    afterAll(async () => { 
+        await environment.down()
+    })
+
     it("Must return response with status 200 OK", () => { 
         expect(res.status).toBe(200)
     })

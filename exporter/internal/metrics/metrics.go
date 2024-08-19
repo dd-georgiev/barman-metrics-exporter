@@ -43,7 +43,9 @@ func InitAllMetrics(meter metric.Meter, integration integration.BarmanIntegratio
 	initMetric(meter, integration, &metrics, NewBarmanLastBackupCopyTime)
 	initMetric(meter, integration, &metrics, NewBarmanLastBackup)
 	initMetric(meter, integration, &metrics, NewBarmanFirstBackup)
-
+	initMetric(meter, integration, &metrics, NewBarmanLastBackupWalRatePerSecond)
+	initMetric(meter, integration, &metrics, NewBarmanLastBackupThroughput)
+	initMetric(meter, integration, &metrics, NewBarmanLastBackupWalFiles)
 	initMetricUpdateTimeMetric(meter)
 
 	elapsed := time.Since(start)
