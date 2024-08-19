@@ -91,6 +91,19 @@ The integration module forks a process with the `barman cli`, all environment va
 # Deployment and configuration
 
 ## Installation
+You can compile the exporter as follows:
+1. Clone this repository
+2. Navigate to the `exporter` directory and build the container
+   ```
+   cd exporter
+   docker build --progress=plain . -f build.Dockerfile -t exporter
+   ```
+3. Extract the archive from the container (the example below copies it inside the current folder)
+   ```
+   docker run -d --name exporter_build exporter
+   docker cp exporter_build:/app/exporter $(pwd)/exporter
+   docker rm exporter_build
+   ```
 ## Systemd service
 In order to make managing the state of the exporter, the following unit file can be used:
 > Assuming that the exporter executable is stored in `/opt/barman_exporter/exporter` and the configuration is in `/etc/barman_exporter/config.yaml`
