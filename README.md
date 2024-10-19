@@ -9,6 +9,7 @@ The metrics which are currently exported are the same as the ones from [promethe
 | barman_last_backup_wal_rate_per_second | outputs the wal rate(per second ) for the last backup  |
 | barman_last_backup_throughput          | outputs the throughput during the last backup creation |
 | barman_last_backup_wal_files           | outputs the number of wals for the last backup         | 
+
 You can find a list and description of them in [docs/spec/metrics.md](docs/spec/metrics.md). The list include planned metrics for the future
 
 # Installation 
