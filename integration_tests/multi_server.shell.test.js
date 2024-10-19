@@ -16,9 +16,9 @@ describe("Barman exporter with multiple postgres servers", () => {
         .withStartupTimeout(5 * MINUTES)
         .up();
 
-        // let the metricsenvironment collect and be exposed
+        // let the metrics collect and be exposed
         const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-        await delay(30 * SECONDS) /// waiting 1 second.
+        await delay(30 * SECONDS)
 
 
         const req = request("http://localhost:2222")

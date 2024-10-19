@@ -12,6 +12,7 @@
     "testcontainers": "^10.10.3"
   },
   "dependencies": {
+    "jest": "^29.7.0",
     "supertest": "^7.0.0"
   }
 }

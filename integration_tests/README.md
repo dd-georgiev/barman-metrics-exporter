@@ -13,7 +13,14 @@ This folder contains the code for the integration tests. The structure is as fol
 # Running
 You will need to setup [supported container runtime by TestContainers](https://node.testcontainers.org/supported-container-runtimes/) (I use Docker) and Node v22. 
 
-Make sure that your use can start containers 
+Make sure that your use can start containers(fire a docker ps command).
+
+Before running the integration tests, you must have stable build locally. To build the latest code, navigate to the `exporter` directory(the one containing the go code) and built the container(`build.Dockerfile`) with name `exporter`:
+```bash
+$ cd exporter
+$ docker build . -f build.Dockerfile -t exporter:latest
+```
+
 To run the tests run:
 ```
 npm install
